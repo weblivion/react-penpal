@@ -1,16 +1,16 @@
 {
-  "name": "react-penpal",
+  "name": "@jzetlen/react-penpal",
   "version": "1.0.4",
   "description": "Penpal on React",
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
-    "example": "cd example && webpack serve"
+    "example": "cd example && webpack serve --mode development"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lunuy/react-penpal.git"
+    "url": "git+https://github.com/zetlen/react-penpal.git"
   },
   "keywords": [
     "penpal",
@@ -21,25 +21,25 @@
   "author": "Lunuy",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/Lunuy/react-penpal/issues"
+    "url": "https://github.com/zetlen/react-penpal/issues"
   },
-  "homepage": "https://github.com/Lunuy/react-penpal#readme",
+  "homepage": "https://github.com/zetlen/react-penpal#readme",
   "devDependencies": {
-    "react": "^17.0.1",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^16.9.8",
+    "react": "^17.0.1",
     "react-dom": "^17.0.0",
-    "ts-loader": "^8.0.6",
-    "typescript": "^4.0.3",
-    "webpack": "^5.1.3",
-    "webpack-cli": "^4.1.0",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-node-externals": "^2.5.2"
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "penpal": "^5.3.0"
+    "penpal": "^6.2.2"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0"
+    "react": "^16.8.0 || ^17 || ^18"
   }
 }
