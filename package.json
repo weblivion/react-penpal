@@ -1,6 +1,6 @@
 {
   "name": "@jzetlen/react-penpal",
-  "version": "1.0.4",
+  "version": "1.1.0-0",
   "description": "Penpal on React",
   "main": "./dist/index.js",
   "scripts": {
