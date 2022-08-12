@@ -22,6 +22,6 @@ module.exports = {
     path: path.resolve(__dirname, 'static'),
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'static')
+    static: path.resolve(__dirname, 'static')
   }
 };
