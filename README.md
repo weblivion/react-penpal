@@ -1,6 +1,8 @@
 # react-penpal
 Penpal on React
 
+## :information: _Forked from [Lunuy/react-penpal](github.com/Lunuy/react-penpal) to update dependencies
+
 ## Example
 parent
 ```ts
