@@ -1,7 +1,7 @@
 
 import React, { createRef, HTMLAttributeReferrerPolicy, IframeHTMLAttributes, useEffect, useState } from "react";
 import { connectToChild } from "penpal";
-import { AsyncMethodReturns, Methods, PenpalError } from "penpal/lib/types";
+import { AsyncMethodReturns, Methods, PenpalError } from "penpal";
 
 type Options = {
     /**

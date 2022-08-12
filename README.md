@@ -4,7 +4,7 @@ Penpal on React
 ## Example
 parent
 ```ts
-import { AsyncMethodReturns } from "penpal/lib/types";
+import { AsyncMethodReturns } from "penpal";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import reactDOM from "react-dom";
 import { Penpal } from "react-penpal";
