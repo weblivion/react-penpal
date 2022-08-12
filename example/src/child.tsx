@@ -1,7 +1,7 @@
 import { connectToParent } from "penpal";
 
 (async () => {
-    const connection = connectToParent({
+    const connection = connectToParent<{ hello(greeting: string): void }>({
         methods: {
             hi(string : string) {
                 document.body.appendChild(document.createElement("br"));
