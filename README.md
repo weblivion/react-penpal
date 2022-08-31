@@ -1,7 +1,13 @@
 # react-penpal
 Penpal on React
 
-## :information: _Forked from [Lunuy/react-penpal](github.com/Lunuy/react-penpal) to update dependencies
+## Important Note: This Project is a Fork
+
+This project is from [Lunuy/react-penpal](github.com/Lunuy/react-penpal) to update
+peer dependencies; in particular to support installing in a React 18 environment.
+
+It is further forked from [zetlen/react-penpal](https://github.com/zetlen/react-penpal)
+because their published build contains no JS files nor typings.
 
 ## Example
 parent
