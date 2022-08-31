@@ -1,7 +1,4 @@
+import { PenpalParent}  from "./PenpalParent";
+import { usePenpalParent } from "./usePenpalParent";
 
-import Penpal from "./Penpal";
-
-
-export { 
-    Penpal
-};
+export { PenpalParent, usePenpalParent };

@@ -1,7 +1,7 @@
 {
-  "name": "@jzetlen/react-penpal",
-  "version": "1.1.0-0",
-  "description": "Penpal on React",
+  "name": "@weblivion/react-penpal",
+  "version": "2.0.0",
+  "description": "React wrappers for the Penpal iframe postMessage communication library",
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zetlen/react-penpal.git"
+    "url": "git+https://github.com/weblivion/react-penpal.git"
   },
   "keywords": [
     "penpal",
@@ -18,15 +18,16 @@
     "iframe",
     "postmessage"
   ],
-  "author": "Lunuy",
-  "license": "Unlicense",
+  "author": "Lunuy, Weblivion",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zetlen/react-penpal/issues"
+    "url": "https://github.com/weblivion/react-penpal/issues"
   },
-  "homepage": "https://github.com/zetlen/react-penpal#readme",
+  "homepage": "https://github.com/weblivion/react-penpal#readme",
   "devDependencies": {
     "@types/react": "^17.0.21",
     "@types/react-dom": "^16.9.8",
+    "prettier": "2.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.0",
     "ts-loader": "^9.3.1",
