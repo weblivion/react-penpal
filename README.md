@@ -12,6 +12,16 @@ It is further forked from [zetlen/react-penpal](https://github.com/zetlen/react-
 
 The code, examples and documentation have also been furthered, including the addition of code to complete the child side of the library.
 
+## Installation
+
+The package is [published to npm](https://www.npmjs.com/package/@weblivion/react-penpal) as `@weblivion/react-penpal`.
+
+```sh
+$ npm install --save @weblivion/react-penpal
+```
+
+If the prefix is omitted, you will install the older upstream release with no `usePenpalParent()` hook.
+
 ## Code Example
 
 In your parent application:
