@@ -33,9 +33,8 @@ In your parent application:
 ```ts
 import React, { useEffect, useState } from 'react';
 import reactDOM from 'react-dom';
-
-import { AsyncMethodReturns } from 'penpal';
-import { Penpal, RemoteProxy } from '@weblivion/react-penpal';
+import { Penpal } from '@weblivion/react-penpal';
+import type { RemoteProxy, Reply } from 'penpal';
 
 type ChildMethods = {
   hi(msg: string): Reply<string>;
@@ -82,9 +81,8 @@ And in your child application:
 ```ts
 import React, { useEffect, useState } from 'react';
 import reactDOM from 'react-dom';
-
-import { Reply } from 'penpal';
 import { usePenpalParent } from '@weblivion/react-penpal';
+import type { Reply } from 'penpal';
 
 type ParentMethods = {
   hello(msg: string): Reply<string>;

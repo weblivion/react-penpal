@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import reactDOM from 'react-dom';
 
-import { RemoteProxy, Reply } from 'penpal';
 import { PenpalParent } from '../../dist/index.js';
+import type { RemoteProxy, Reply } from 'penpal';
 
 type ChildMethods = {
   hi(msg: string): Reply<string>;
