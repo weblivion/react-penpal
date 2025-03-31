@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { WindowMessenger, connect } from 'penpal';
-import { RemoteProxy, Connection, Methods } from 'penpal/lib/types';
+import type { RemoteProxy, Connection, Methods } from 'penpal';
 
 type ConnectOptions = typeof connect.prototype.options;
 type AllowedOrigins = (string | RegExp)[];
