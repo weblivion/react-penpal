@@ -1,16 +1,30 @@
 # react-penpal
 
-A React wrapper for the [Penpal](https://github.com/Aaronius/penpal) iframe postMessage communication library.
+A React wrapper for the [Penpal](https://github.com/Aaronius/penpal) iframe
+postMessage communication library.
 
-Version 2.0 releases the missing counterpart of the library from 1.0, which is the child page consumer to the parent: The `usePenpalParent()` hook. The parent tag has therefore been renamed from `<Penpal>` to `<PenpalParent>`. There is no mirror `<PenpalChild>` tag.
+Version 2.0 releases the missing counterpart of the library from 1.0, which is
+the child page consumer to the parent: The `usePenpalParent()` hook. The parent
+tag has therefore been renamed from `<Penpal>` to `<PenpalParent>`. There is no
+mirror `<PenpalChild>` tag.
+
+Version 3.0 depends on Penpal 7, which introduces
+[breaking API changes](https://github.com/Aaronius/penpal/releases/tag/v7.0.0)
+in support of new functionality, including communication with other windows and
+web workers.
 
 ## Important: This Project is a Fork
 
-This project is from [Lunuy/react-penpal](https://github.com/Lunuy/react-penpal) to update peer dependencies; in particular to support installing in a React 18 environment.
+This project is from [Lunuy/react-penpal](https://github.com/Lunuy/react-penpal)
+to update peer dependencies; in particular to support installing in a React 18
+runtime environment, and new Penpal releases.
 
-It is further forked from [zetlen/react-penpal](https://github.com/zetlen/react-penpal) because at the time of writing, their published package is missing the compiled files.
+It is further forked from
+[zetlen/react-penpal](https://github.com/zetlen/react-penpal) because at the
+time of writing, their published package is missing the compiled files.
 
-The code, examples and documentation have also been furthered, including the addition of code to complete the child side of the library.
+The code, examples and documentation have also been furthered, including the
+addition of code to complete the child side of the library.
 
 ## Code Example
 
@@ -21,10 +35,14 @@ import React, { useEffect, useState } from 'react';
 import reactDOM from 'react-dom';
 
 import { AsyncMethodReturns } from 'penpal';
-import { Penpal } from '@weblivion/react-penpal';
+import { Penpal, RemoteProxy } from '@weblivion/react-penpal';
+
+type ChildMethods = {
+  hi(msg: string): Reply<string>;
+};
 
 function App() {
-  const [child, setChild] = useState<AsyncMethodReturns<any>>(null);
+  const [child, setChild] = useState<RemoteProxy<ChildMethods>>(null);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -57,7 +75,6 @@ function App() {
 
 const main = document.getElementById('main');
 reactDOM.render(<App />, main);
-
 ```
 
 And in your child application:
@@ -66,11 +83,16 @@ And in your child application:
 import React, { useEffect, useState } from 'react';
 import reactDOM from 'react-dom';
 
+import { Reply } from 'penpal';
 import { usePenpalParent } from '@weblivion/react-penpal';
+
+type ParentMethods = {
+  hello(msg: string): Reply<string>;
+};
 
 function App() {
   const [message, setMessage] = useState('');
-  const { parentMethods, connection } = usePenpalParent({
+  const { parentMethods, connection } = usePenpalParent<ParentMethods>({
     methods: {
       hi(message: string) {
         setMessage(message);
@@ -93,7 +115,6 @@ function App() {
 
 const main = document.getElementById('main');
 reactDOM.render(<App />, main);
-
 ```
 
 Pull requests and other offers of help welcome.

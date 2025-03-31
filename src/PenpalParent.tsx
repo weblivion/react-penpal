@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from 'react';
-import { connectToChild } from 'penpal';
-import { AsyncMethodReturns, Methods, PenpalError } from 'penpal';
+import { WindowMessenger, connect } from 'penpal';
+import type { RemoteProxy, Methods, PenpalError } from 'penpal';
 
 interface PenpalParentProps {
   /**
@@ -9,7 +9,7 @@ interface PenpalParentProps {
    * This callback is used to allow returning the child asynchronously when a
    * connection is created, and destroying when the connection is broken
    */
-  setChild: React.Dispatch<React.SetStateAction<AsyncMethodReturns<any>>>;
+  setChild: React.Dispatch<React.SetStateAction<RemoteProxy>>;
   /**
    * Callback handler for when penpal throw errors
    */
@@ -19,20 +19,21 @@ interface PenpalParentProps {
    */
   methods?: Methods;
   /**
-   * The child origin to use to secure communication. If
-   * not provided, the child origin will be derived from the
-   * iframe's src or srcdoc value.
+   * The permissible origins to use to secure communication. Defaults to the current
+   * origin.
    */
-  childOrigin?: string;
+  allowedOrigins?: (string | RegExp)[];
   /**
    * The amount of time, in milliseconds, Penpal should wait
    * for the iframe to respond before rejecting the connection promise.
    */
   timeout?: number;
   /**
-   * Whether log messages should be emitted to the console.
+   * An optional function to which debug logs are passed; Penpal provides
+   * a simple `debug` function that logs messages to the console which can be
+   * used if you don't want to write your own.
    */
-  debug?: boolean;
+  log?: () => void;
 }
 
 type Subtract<A, B> = A extends B ? never : A;
@@ -54,24 +55,30 @@ type EditedHTMLIframeProps = OptionallyProps<
  * The PenpalParent component invokes the iframe and defines the parent side
  * methods, as well as any attributes intended for the iframe tag.
  */
+
 const PenpalParent: React.FC<PenpalParentProps & EditedHTMLIframeProps> = ({
   setChild,
   onError,
   methods = {},
-  childOrigin,
+  allowedOrigins: allowedOrigins,
   timeout,
-  debug,
+  log,
   ...iframeProps
 }) => {
   const ref = createRef<HTMLIFrameElement>();
 
   useEffect(() => {
-    const connection = connectToChild({
-      iframe: ref.current,
+    const messenger = new WindowMessenger({
+      remoteWindow: ref.current.contentWindow,
+      allowedOrigins: allowedOrigins || [new URL(ref.current.src).origin],
+    });
+
+    const connection = connect({
+      // iframe: ref.current,
+      messenger,
       methods,
-      childOrigin,
       timeout,
-      debug,
+      log,
     });
 
     connection.promise.then((child) => {

@@ -1,27 +1,33 @@
 import { useState, useEffect } from 'react';
-import { connectToParent } from 'penpal';
-import { AsyncMethodReturns, Connection } from 'penpal/lib/types';
+import { WindowMessenger, connect } from 'penpal';
+import { RemoteProxy, Connection, Methods } from 'penpal/lib/types';
 
-type ConnectToParentOptions = typeof connectToParent.prototype.options;
-
-interface UsePenpalParentOptions extends ConnectToParentOptions {}
+type ConnectOptions = typeof connect.prototype.options;
+type AllowedOrigins = (string | RegExp)[];
 
 /**
  * A React hook simplifying access to a Penpal parent's methods and connection
  * objects from an iframe child.
- *
- * @param options An object of `Penpal.connectToParent()` options:
- *                https://github.com/Aaronius/penpal#connecttoparentoptions-object--object
  */
-export function usePenpalParent(options: UsePenpalParentOptions) {
-  const [useOptions] = useState(options); // prevents render loop
+export function usePenpalParent<ParentMethods extends Methods>(
+  connectOptions: ConnectOptions,
+  allowedOrigins?: AllowedOrigins
+) {
+  const [useOptions] = useState(connectOptions); // prevents render loop
   const [connection, setConnection] = useState<Connection | null>(null);
-  // FIXME: typing pass-through for type
   const [parentMethods, setParentMethods] =
-    useState<AsyncMethodReturns<any> | null>(null);
+    useState<RemoteProxy<ParentMethods> | null>(null);
 
   useEffect(() => {
-    const connection = connectToParent<typeof options['methods']>(useOptions);
+    const messenger = new WindowMessenger({
+      remoteWindow: window.parent,
+      allowedOrigins: allowedOrigins,
+    });
+
+    const connection = connect<typeof connectOptions['methods']>({
+      messenger,
+      ...useOptions,
+    });
 
     connection.promise.then((data) => {
       setParentMethods(data);

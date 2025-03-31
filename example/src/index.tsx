@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import reactDOM from 'react-dom';
 
-import { AsyncMethodReturns } from 'penpal';
+import { RemoteProxy, Reply } from 'penpal';
 import { PenpalParent } from '../../dist/index.js';
 
+type ChildMethods = {
+  hi(msg: string): Reply<string>;
+};
+
 function App() {
-  const [child, setChild] = useState<AsyncMethodReturns<any>>(null);
+  const [child, setChild] = useState<RemoteProxy<ChildMethods>>(null);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
