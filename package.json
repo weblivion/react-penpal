@@ -38,7 +38,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "penpal": "^7.0.3"
+    "penpal": "^7.0.4"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17 || ^18"
