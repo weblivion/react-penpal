@@ -1,6 +1,6 @@
 {
   "name": "@weblivion/react-penpal",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "React wrappers for Penpal, a library for communicating with iframes, workers and windows using postMessage",
   "main": "./dist/index.js",
   "scripts": {
