@@ -41,6 +41,7 @@ export function usePenpalParent<ParentMethods extends Methods>(
     return () => {
       connection.destroy();
       setParentMethods(null);
+      setConnection(null);
     };
   }, [useOptions]);
 
