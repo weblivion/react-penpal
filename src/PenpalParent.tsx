@@ -92,9 +92,9 @@ const PenpalParent: React.FC<PenpalParentProps & EditedHTMLIframeProps> = ({
 
     return () => {
       connection.destroy();
-      setChild(undefined);
+      setChild(null);
     };
-  }, []);
+  }, [ref, setChild, onError, methods, allowedOrigins, timeout, log]);
 
   return <iframe ref={ref} {...iframeProps} />;
 };
