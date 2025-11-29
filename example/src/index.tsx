@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import reactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { PenpalParent } from '../../dist/index.js';
 import type { RemoteProxy, Reply } from 'penpal';
@@ -41,4 +41,5 @@ function App() {
 }
 
 const main = document.getElementById('main');
-reactDOM.render(<App />, main);
+const root = createRoot(main);
+root.render(<App />);

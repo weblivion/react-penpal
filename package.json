@@ -1,6 +1,6 @@
 {
   "name": "@weblivion/react-penpal",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "React wrappers for Penpal, a library for communicating with iframes, workers and windows using postMessage",
   "main": "./dist/index.js",
   "scripts": {
@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/weblivion/react-penpal#readme",
   "devDependencies": {
-    "@types/react": "^17.0.21",
-    "@types/react-dom": "^16.9.8",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "prettier": "2.7.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "ts-loader": "^9.3.1",
     "typescript": "^4.7.4",
     "webpack": "^5.74.0",
@@ -41,6 +41,6 @@
     "penpal": "^7.0.4"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17 || ^18"
+    "react": "^16.8.0 || ^17 || ^18 || ^19"
   }
 }
