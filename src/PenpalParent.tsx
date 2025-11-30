@@ -92,10 +92,10 @@ const PenpalParent: React.FC<PenpalParentProps & EditedHTMLIframeProps> = ({
 
     return () => {
       connection.destroy();
-      setChild(null);
+      setChild(undefined);
     };
   }, []);
-  // If you put effect observers here, the connection will be broken when you 
+  // If you put effect observers here, the connection will be broken when you
   // receive messages and result in an error. DO NOT ENABLE EFFECT OBSERVERS!
 
   return <iframe ref={ref} {...iframeProps} />;
